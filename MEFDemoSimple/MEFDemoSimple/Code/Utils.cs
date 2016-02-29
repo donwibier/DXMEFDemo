@@ -12,41 +12,7 @@ using System.Threading.Tasks;
 namespace MEFDemoSimple.Code
 {
     public static class Utils
-    {
-        public static int TryForEachExport<TExportType>(CompositionContainer pluginContainer, Action<TExportType> action, string contractName = "")
-            where TExportType : IPlugin
-        {
-            int count = 0;
-            try
-            {
-                int skipCount = 0;
-                foreach (var item in pluginContainer.GetExports<TExportType>(contractName))
-                {
-                    string itemName = item.Value.ToString();
-                    // check if the plugin is enabled
-                    bool disabled = false;
-
-                    if (disabled)
-                    {
-                        skipCount++;
-                        Log(String.Format("   - skipping -> {0}", itemName));
-                    }
-                    else
-                    {
-                        Log(String.Format("   - action -> {0}", itemName));
-                        action(item.Value);
-                        count++;
-                    }
-                }
-                Log(String.Format("{0} actions performed / {1} actions skipped", count, skipCount));
-            }
-            catch (Exception err)
-            {
-                throw LogPluginException(err);
-            }
-            return count;
-        }
-
+    {        
         public static Exception GetException(Exception err)
         {
             return err.InnerException ?? err;
