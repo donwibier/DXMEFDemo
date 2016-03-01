@@ -15,7 +15,8 @@ namespace MEFDemoSimple
             if (!IsPostBack)
             {
                 ListBox1.DataBind();
-                TextBox1.Text = Manager.ContentProvider.Get();                
+                if (Manager.ContentProvider != null)
+                    TextBox1.Text = Manager.ContentProvider.Get();
             }
             
         }

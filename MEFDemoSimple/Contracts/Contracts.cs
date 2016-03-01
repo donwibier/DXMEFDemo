@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,14 @@ namespace Contracts
     {
         string Execute(string text);
     }
+    public interface IDBRepository
+    {
+        bool Add<T>(T item) where T :class;
+        bool Save();
+    }
 
+    public interface IDBPluginContext:IPlugin
+    {
+        void Setup(DbModelBuilder modelBuilder);
+    }
 }

@@ -15,7 +15,8 @@ namespace MEFDemoSimple
         }
         protected void Application_End(object sender, EventArgs e)
         {
-            Manager.SavePluginStates();
+            
+            //Manager.SavePluginStates();
         }
     }
 }

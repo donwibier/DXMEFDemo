@@ -61,7 +61,8 @@ namespace MEFDemoSimple.Code
         {
             get
             {
-                return _manager.ContentGenerator;
+                return PluginEnabled(_manager.ContentGenerator.ToString()) ?
+                    _manager.ContentGenerator : null;
             }
         }
         public static IEnumerable<IOperation> Operations
